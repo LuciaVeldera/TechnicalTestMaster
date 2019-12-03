@@ -1,0 +1,52 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/GetData.js"></script>
+    <style type="text/css">
+        .error {
+            color: red;
+            display: inline-block;
+            margin-bottom: -57px !important;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        @using (Html.BeginForm("Upload", "ImportTransaction", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+                <div class="col-sm-1 col-md-6 col-xs-12">
+                    <h5 class="text-danger">@ViewBag.Error</h5>
+                    <h5 class="text-success">@ViewBag.Success</h5>
+                    <div class="form-group">
+                        <label>Choose CSV or XML File:</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input id="postedFile" name="postedFile" type="file" class="custom-file-input" />
+                                <label class="custom-file-label"></label>
+                            </div>
+                            <div class="input-group-append">
+                                <input type="submit" class="btn btn-outline-primary" value="Upload" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+        <button id="btnGetData" type="button" class="btn btn-outline-primary">Show Transaction Detail</button>
+        <div id="updatePanel" style="padding:20px;"></div>
+    </div>
+</body>
+</html>  
